@@ -1,0 +1,11 @@
+service:
+  name: loyalty
+  port: 8050
+
+image:
+  repository: "thefungun36/loyalty"
+  pullPolicy: Always
+  tag: "latest"
+
+data:
+  DATABASE_URL: "postgresql://program:test@postgres-postgresql.default.svc.cluster.local:5432/loyalties"

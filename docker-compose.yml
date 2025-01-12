@@ -1,0 +1,67 @@
+services:
+  gateway:
+    build:
+      dockerfile: Dockerfile
+      context: svc-gateway
+    image: thefungun36/gateway:latest
+    ports:
+      - "8080:8080"
+  reservation:
+    build:
+      dockerfile: Dockerfile
+      context: svc-reservation
+    image: thefungun36/reservation:latest
+    ports:
+      - "8070:8070"
+    environment:
+      DATABASE_URL: "postgres://postgres:postgres@postgres/reservations"
+    depends_on:
+      postgres:
+        condition: service_healthy
+  payment:
+    build:
+      dockerfile: Dockerfile
+      context: svc-payment
+    image: thefungun36/payment:latest
+    ports:
+      - "8060:8060"
+    environment:
+      DATABASE_URL: "postgres://postgres:postgres@postgres/payments"
+    depends_on:
+      postgres:
+        condition: service_healthy
+  loyalty:
+    build:
+      dockerfile: Dockerfile
+      context: svc-loyalty
+    image: thefungun36/loyalty:latest
+    ports:
+      - "8050:8050"
+    environment:
+      DATABASE_URL: "postgres://postgres:postgres@postgres/loyalties"
+    depends_on:
+      postgres:
+        condition: service_healthy
+  postgres:
+    image: library/postgres:13
+    container_name: postgres
+    restart: on-failure
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "postgres"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U program -d loyalties"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./postgres/:/docker-entrypoint-initdb.d/
+    ports:
+      - "5432:5432"
+
+# TODO добавить сервисы
+
+volumes:
+  db-data:

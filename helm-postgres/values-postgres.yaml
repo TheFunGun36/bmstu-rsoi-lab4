@@ -1,0 +1,36 @@
+global:
+  postgresql:
+    auth:
+      postgresPassword: "postgres" # Пароль для пользователя postgres
+primary:
+  persistence:
+    enabled: true
+    size: 1Gi                     # Размер хранилища
+    # mountPath: /var/lib/postgresql/data
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: 250m
+    limits:
+      memory: 512Mi
+      cpu: 500m
+initdbScripts:
+  init.sql: |-
+    CREATE ROLE program WITH PASSWORD 'test';
+    ALTER ROLE program WITH LOGIN;
+    CREATE DATABASE payments;
+    GRANT ALL PRIVILEGES ON DATABASE payments TO program;
+    CREATE DATABASE reservations;
+    GRANT ALL PRIVILEGES ON DATABASE reservations TO program;
+    CREATE DATABASE loyalties;
+    GRANT ALL PRIVILEGES ON DATABASE loyalties TO program;
+    GRANT ALL ON SCHEMA public TO program;
+    ALTER DATABASE payments OWNER TO program;
+    ALTER DATABASE reservations OWNER TO program;
+    ALTER DATABASE loyalties OWNER TO program;
+
+service:
+  type: ClusterIP     
+
+metadata:
+  name: postgres

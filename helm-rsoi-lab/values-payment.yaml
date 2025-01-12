@@ -1,0 +1,11 @@
+service:
+  name: payment
+  port: 8060
+
+image:
+  repository: "thefungun36/payment"
+  pullPolicy: Always
+  tag: "latest"
+
+data:
+  DATABASE_URL: "postgresql://program:test@postgres-postgresql.default.svc.cluster.local:5432/payments"

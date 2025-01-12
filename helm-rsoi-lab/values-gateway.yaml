@@ -1,0 +1,11 @@
+service:
+  name: gateway
+  port: 8080
+
+image:
+  repository: "thefungun36/gateway"
+  pullPolicy: Always
+  tag: "latest"
+
+ingress:
+  host: "rsoi-lab.ru"

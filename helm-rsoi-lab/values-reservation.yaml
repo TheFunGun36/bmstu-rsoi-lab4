@@ -1,0 +1,11 @@
+service:
+  name: reservation
+  port: 8070
+
+image:
+  repository: "thefungun36/reservation"
+  pullPolicy: Always
+  tag: "latest"
+
+data:
+  DATABASE_URL: "postgresql://program:test@postgres-postgresql.default.svc.cluster.local:5432/reservations"
