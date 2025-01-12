@@ -62,7 +62,7 @@ jobs:
           helm install gateway ./helm-rsoi-lab -f ./helm-rsoi-lab/values-gateway.yaml
           sleep 25
 
-          sudo bash -c "echo '84.201.149.77 rsoi-lab.ru' >> /etc/hosts"
+          sudo bash -c "echo '158.160.143.187 rsoi-lab.ru' >> /etc/hosts"
 
       - name: Run API Tests
         uses: matt-ball/newman-action@master
