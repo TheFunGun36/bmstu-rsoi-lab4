@@ -9,3 +9,6 @@ image:
 
 ingress:
   host: "rsoi-lab.ru"
+
+data:
+  DATABASE_URL: "postgresql://program:test@postgres-postgresql.default.svc.cluster.local:5432/flights"
