@@ -14,7 +14,7 @@ services:
     ports:
       - "8070:8070"
     environment:
-      DATABASE_URL: "postgres://postgres:postgres@postgres/reservations"
+      DATABASE_URL: "postgresql://program:test@postgresql.default.svc.cluster.local/reservations"
     depends_on:
       postgres:
         condition: service_healthy
@@ -26,7 +26,7 @@ services:
     ports:
       - "8060:8060"
     environment:
-      DATABASE_URL: "postgres://postgres:postgres@postgres/payments"
+      DATABASE_URL: "postgresql://program:test@postgresql.default.svc.cluster.local/payments"
     depends_on:
       postgres:
         condition: service_healthy
@@ -38,7 +38,7 @@ services:
     ports:
       - "8050:8050"
     environment:
-      DATABASE_URL: "postgres://postgres:postgres@postgres/loyalties"
+      DATABASE_URL: "postgresql://program:test@postgresql.default.svc.cluster.local/loyalties"
     depends_on:
       postgres:
         condition: service_healthy
