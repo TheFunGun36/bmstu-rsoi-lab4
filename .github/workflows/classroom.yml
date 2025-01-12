@@ -60,7 +60,7 @@ jobs:
           helm install reservation ./helm-rsoi-lab -f ./helm-rsoi-lab/values-reservation.yaml
           helm uninstall gateway || true
           helm install gateway ./helm-rsoi-lab -f ./helm-rsoi-lab/values-gateway.yaml
-          sleep 25
+          sleep 60
 
           sudo bash -c "echo '158.160.143.187 rsoi-lab.ru' >> /etc/hosts"
 
