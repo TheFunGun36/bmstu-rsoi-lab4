@@ -8,4 +8,4 @@ image:
   tag: "latest"
 
 data:
-  DATABASE_URL: "postgresql://program:test@postgres-postgresql.default.svc.cluster.local:5432/reservations"
+  DATABASE_URL: "postgresql://program:test@postgresql.default.svc.cluster.local:5432/reservations"

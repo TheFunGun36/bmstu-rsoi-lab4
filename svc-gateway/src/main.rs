@@ -44,9 +44,9 @@ mod tests;
 struct ApiDoc;
 
 pub const SERVICE_ENDPOINT: &str = "0.0.0.0:8080";
-pub const RESERVATION_ENDPOINT: &str = "http://reservation-rsoi-lab:8070";
-pub const PAYMENT_ENDPOINT: &str = "http://payment-rsoi-lab:8060";
-pub const LOYALTY_ENDPOINT: &str = "http://loyalty-rsoi-lab:8050";
+pub const RESERVATION_ENDPOINT: &str = "http://reservation-bmstu-rsoi:8070";
+pub const PAYMENT_ENDPOINT: &str = "http://payment-bmstu-rsoi:8060";
+pub const LOYALTY_ENDPOINT: &str = "http://loyalty-bmstu-rsoi:8050";
 // pub const RESERVATION_ENDPOINT: &str = "http://localhost:8070";
 // pub const PAYMENT_ENDPOINT: &str = "http://localhost:8060";
 // pub const LOYALTY_ENDPOINT: &str = "http://localhost:8050";
