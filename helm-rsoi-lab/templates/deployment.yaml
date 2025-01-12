@@ -40,10 +40,19 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          env:
+            - name: DATABASE_URL
+              value: {{ .Values.data.DATABASE_URL }}
           livenessProbe:
-            {{- toYaml .Values.livenessProbe | nindent 12 }}
+            initialDelaySeconds: 5
+            httpGet:
+              path: /manage/health
+              port: {{ .Values.service.port }}
           readinessProbe:
-            {{- toYaml .Values.readinessProbe | nindent 12 }}
+            initialDelaySeconds: 5
+            httpGet:
+              path: /manage/health
+              port: {{ .Values.service.port }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.volumeMounts }}
